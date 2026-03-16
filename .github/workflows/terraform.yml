@@ -42,3 +42,8 @@ jobs:
       with:
         name: terraform-plan
         path: plan.tfplan
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      run: terraform apply -auto-approve plan.tfplan
