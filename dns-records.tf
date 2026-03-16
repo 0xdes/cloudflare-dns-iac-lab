@@ -4,9 +4,9 @@ data "cloudflare_zone" "domain" {
 
 
 resource "cloudflare_record" "proxmox" {
-  zone_id = data.cloudflare_zone.domain.id    #
+  zone_id = data.cloudflare_zone.domain.id #
   name    = "megamind"
-  content = "192.168.3.2"   # example private IP
+  content = "192.168.3.2" # example private IP
   type    = "A"
   ttl     = 300
   proxied = false
